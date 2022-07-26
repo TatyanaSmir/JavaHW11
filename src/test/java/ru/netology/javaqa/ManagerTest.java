@@ -38,7 +38,7 @@ public class ManagerTest {
     }
 
     @Test
-    public void shouldFind5LAstAddedMovies(){
+    public void shouldFind5LAstAddedMovies() {
 
         Manager manager = new Manager(5);
         manager.addMovies("movie1");
@@ -65,7 +65,7 @@ public class ManagerTest {
     }
 
     @Test
-    public void shouldFindLastAddedMoviesByDefault(){
+    public void shouldFindLastAddedMoviesByDefault() {
         Manager manager = new Manager();
         manager.addMovies("movie1");
         manager.addMovies("movie2");
@@ -96,4 +96,25 @@ public class ManagerTest {
         Assertions.assertArrayEquals(expected, actual);
 
     }
+
+    @Test
+    public void shouldFindLastAddedMoviesLessThanLimit() {
+        Manager manager = new Manager(6);
+        manager.addMovies("movie1");
+        manager.addMovies("movie2");
+        manager.addMovies("movie3");
+        manager.addMovies("movie4");
+        manager.addMovies("movie5");
+
+
+        String[] actual = manager.findLast();
+        String[] expected = {"movie5",
+                "movie4",
+                "movie3",
+                "movie2",
+                "movie1"
+        };
+
+    }
+
 }
